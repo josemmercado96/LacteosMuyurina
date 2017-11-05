@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+{% block title %}
+Lista de Tipo de Productos
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="container">
+        <h1>Lista de Tipos de Productos</h1>
+        <div class="table">
+            <table class="table table-bordered table-striped">
+                <thead class="encabezado">    
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Refrigeración</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if tipos %}
+                        
+                        {% for tipo in tipos  %}
+                            <tr>
+                                <td>{{tipo.nombre}}</td>
+                                <th>{{tipo.refrigeracion}}</th>
+                            </tr>
+                        {% endfor %}
+                            
+                    {% else %}
+                            <h1 class="text-center">No Se Han Registrado Refrigeraciones</h1>
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="container text-right">
+                <a href="{% url 'productos:crearTipo' %}" role="button" class="btn btn-default guardar">Nueva</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

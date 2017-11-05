@@ -1,0 +1,70 @@
+.encabezado {
+	background-color: blue;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: white;
+}
+
+.navbar-default .navbar-brand{
+	background-color: yellow;
+	color: blue;
+}
+
+.navbar-default .navbar-brand:hover {
+	background-color: yellow;
+	color: darkblue;
+}
+
+.icon-bar {
+	background-color: yellow !important;
+	color: blue;
+}
+
+.login {
+	background-color: blue;
+	color: yellow;
+}
+
+.login a {
+	color: yellow;
+	text-decoration: none;
+}
+
+.login a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.btn-login {
+	margin-top: 15px;
+	background-color: yellow;
+	color: blue;
+}
+
+.btn-login:hover {
+	background-color: yellow;
+	color: darkblue;
+}
+
+.encabezado{
+	background-color: blue;
+}
+
+.encabezado th {
+	color: white;
+}
+
+textarea {
+	resize: none;
+}
+
+.guardar {
+	background-color: blue !important;
+	color: yellow !important;
+}
+
+.guardar:hover {
+	background-color: darkblue !important;
+	color: yellow !important;
+}

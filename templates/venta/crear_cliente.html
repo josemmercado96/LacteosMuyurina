@@ -1,0 +1,46 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Nuevo Cliente
+{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="container">
+            <h1>Añadir Nuevo Cliente</h1>
+            <form method="post" class=""> {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="nit" class="control-label">NIT o Carnet de Identidad</label>
+                        <input type="text" name="nit" id="nit" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <label for="razon-social">Nombre o Razón Social</label>
+                        <input type="text" name="razon_social" id="razon-social" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="telefono">Teléfono</label>
+                        <input type="text" name="telefono" id="telefono" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="correo">Correo</label>
+                        <input type="text" name="correo" id="correo" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <textarea name="direccion" class="form-control" id="direccion" rows="5"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-default guardar">Guardar</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

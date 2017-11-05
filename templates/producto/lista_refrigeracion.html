@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+{% block title %}
+Lista de Refrigeraciones
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="container">
+        <h1>Lista de Refrigeraciones</h1>
+        <div class="table">
+            <table class="table table-bordered table-striped">
+                <thead class="encabezado">    
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if refrigeraciones %}
+                        
+                        {% for refrigeracion in refrigeraciones  %}
+                            <tr>
+                                <td>{{refrigeracion.nombre}}</td>
+                                <th>{{refrigeracion.descripcion}}</th>
+                            </tr>
+                        {% endfor %}
+                            
+                    {% else %}
+                            <h1 class="text-center">No Se Han Registrado Refrigeraciones</h1>
+                    {% endif %}
+                    
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="container text-right">
+                <a href="{% url 'productos:refrigeracion' %}" role="button" class="btn btn-default guardar">Nueva</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
