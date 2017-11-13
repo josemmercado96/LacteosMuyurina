@@ -21,10 +21,6 @@ def listaRefrigeracion(request):
     return render(request,'producto/lista_refrigeracion.html',context)
 
 def crearTipo(request):
-    refrigeracion = Refrigeracion.objects.all()
-    context = {'refrigeraciones':refrigeracion}
-    return render(request,'producto/crear_tipo.html',context)
-    
     if request.method == 'POST':
         form = TipoProductoForm(request.POST)
         if form.is_valid():

@@ -7,29 +7,32 @@ Nuevo Tipo de Producto
     <div class="container">
         <h1>Nuevo Tipo de Producto</h1>
         <form method="post">{% csrf_token %}
+           <!-- <div class="row">
+                {{ form.as_p }}     
+            </div>-->
             <div class="row">
-                <div class="form-group col-md-3">
-                    <label for="nombre" class="control-label">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" id="nombre">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="" class="control-label">{{ form.nombre.label }}</label>
+                        {{ form.nombre }}
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="descripcion" class="control-label">Descripción</label>
-                    <textarea name="descripcion" class="form-control" id="descripcion" rows="5"></textarea>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="" class="control-label">{{ form.descripcion.label }}</label>
+                        {{ form.descripcion }}
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-3">
-                    <label for="refrigeracion" class="control-label">Refrigeración Necesaria</label>
-                    <select name="refrigeracion" id="refrigeracion" class="form-control">
-                        <option value="0">---------</option>
-                        {% for refrigeracion in refrigeraciones %}
-                            <option value="{{refrigeracion.id}}">{{refrigeracion.nombre}}</option>
-                        {% endfor %}
-                            
-                    </select>
-                </div>      
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="" class="control-label">{{ form.refrigeracion.label }}</label>
+                        {{ form.refrigeracion }}
+                    </div>
+                </div>
             </div>
             <button class="btn guardar">Guardar</button>
         </form>
