@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RefrigeracionForm, TipoProductoForm
-from .models import Refrigeracion, TipoProducto
+from .forms import RefrigeracionForm, TipoProductoForm, ProductoForm
+from .models import Refrigeracion, TipoProducto, Producto
 # Create your views here.
 
 def crearRefrigeracion(request):
@@ -36,3 +36,18 @@ def listaTipos(request):
     context = {'tipos':tipo}
     return render(request,'producto/lista_tipos.html',context)
 
+def crearProducto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('productos:listaProductos')
+    else:
+        form = ProductoForm()
+
+    return render(request,'producto/crear_producto.html',{'form':form})
+
+def listaProductos(request):
+    producto = Producto.objects.all()
+    context = {'productos':producto}
+    return render(request,'producto/lista_productos.html',context)
