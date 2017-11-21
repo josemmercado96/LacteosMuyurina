@@ -1,5 +1,5 @@
 from django import forms
-from .models import Refrigeracion, TipoProducto, Producto
+from .models import Refrigeracion, TipoProducto, Producto, LoteProduccion
 
 class RefrigeracionForm(forms.ModelForm):
     class Meta:
@@ -46,4 +46,25 @@ class ProductoForm(forms.ModelForm):
             'stock' : forms.NumberInput(attrs={'class':'form-control','readonly':'readonly','value':0}),
             'stock_minimo' : forms.NumberInput(attrs={'class':'form-control'}),
             'tipo' : forms.Select(attrs={'class':'form-control'}),
+        }
+
+class LoteForm(forms.ModelForm):
+    class Meta:
+        model = LoteProduccion
+        fields = '__all__'
+
+        labels = {
+            'codigo' : 'Código',
+            'fecha_produccion' : 'Fecha de Producción',
+            'fecha_vencimiento' : 'Fecha de Vencimiento',
+            'cantidad' : 'Cantidad',
+            'producto' : 'Producto',
+        }
+
+        widgets = {
+            'codigo' : forms.TextInput(attrs={'class':'form-control'}),
+            'fecha_produccion' : forms.TextInput(attrs={'class':'form-control datepicker'}),
+            'fecha_vencimiento' : forms.TextInput(attrs={'class':'form-control datepicker'}),
+            'cantidad' : forms.NumberInput(attrs={'class':'form-control'}),
+            'producto' : forms.Select(attrs={'class':'form-control'}),
         }

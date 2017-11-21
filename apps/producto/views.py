@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .forms import RefrigeracionForm, TipoProductoForm, ProductoForm
-from .models import Refrigeracion, TipoProducto, Producto
+from .forms import RefrigeracionForm, TipoProductoForm, ProductoForm, LoteForm
+from .models import Refrigeracion, TipoProducto, Producto, LoteProduccion
 # Create your views here.
 
 def crearRefrigeracion(request):
@@ -51,3 +51,21 @@ def listaProductos(request):
     producto = Producto.objects.all()
     context = {'productos':producto}
     return render(request,'producto/lista_productos.html',context)
+
+def crearLote(request):
+    producto = Producto.objects.all()
+    context = {'productos':producto}
+
+    if request.method == 'POST':
+        form = LoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            for producto in productos:
+                if LoteProduccion.id == producto.id:
+                    producto.stock += LoteProduccion.cantidad
+                    pass
+        return redirect('productos:listaProductos')
+    else:
+        form = LoteForm()
+
+    return render(request,'producto/crear_lote.html',{'form':form})
