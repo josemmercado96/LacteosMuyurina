@@ -1,0 +1,24 @@
+{% extends "base/base.html" %}
+{% block title %}
+Nuevo Lote de Producción
+{% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="container">
+        <form action="" method="POST"> {% csrf_token %}
+            <div class="row">
+                <div class="container">
+                    {{form.as_p}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="container">
+                    <button class="btn guardar">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+{% block title %}
+Lista de Productos
+{% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="text-center">Lista de Productos</h1>
+        </div>
+        <div class="table">
+            <table class="table table-bordered table-striped">
+                <thead class="encabezado">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Porcentaje de Descuento</th>
+                        <th>Cantidad de Descuento</th>
+                        <th>Stock</th>
+                        <th>Stock Mínimo</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if productos %}
+                        {% for producto in productos %}
+                            <tr>
+                                <th>{{producto.nombre}}</th>
+                                <th>{{producto.precio}}</th>
+                                <th>{{producto.porcentaje_descuento}}</th>
+                                <th>{{producto.cantidad_descuento}}</th>
+                                <th>{{producto.stock}}</th>
+                                <th>{{producto.stock_minimo}}</th>
+                                <th>{{producto.tipo}}</th>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -66,5 +66,5 @@ class LoteForm(forms.ModelForm):
             'fecha_produccion' : forms.TextInput(attrs={'class':'form-control datepicker'}),
             'fecha_vencimiento' : forms.TextInput(attrs={'class':'form-control datepicker'}),
             'cantidad' : forms.NumberInput(attrs={'class':'form-control'}),
-            'producto' : forms.Select(attrs={'class':'form-control'}),
+            'producto' : forms.Select(attrs={'class':'form-control', 'id':'producto'}),
         }

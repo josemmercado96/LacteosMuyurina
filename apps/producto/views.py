@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .forms import RefrigeracionForm, TipoProductoForm, ProductoForm, LoteForm
 from .models import Refrigeracion, TipoProducto, Producto, LoteProduccion
@@ -37,6 +37,7 @@ def listaTipos(request):
     return render(request,'producto/lista_tipos.html',context)
 
 def crearProducto(request):
+    tipo = TipoProducto.objects.all()
     if request.method == 'POST':
         form = ProductoForm(request.POST)
         if form.is_valid():
@@ -45,7 +46,7 @@ def crearProducto(request):
     else:
         form = ProductoForm()
 
-    return render(request,'producto/crear_producto.html',{'form':form})
+    return render(request,'producto/crear_producto.html',{'form':form,'tipos':tipo})
 
 def listaProductos(request):
     producto = Producto.objects.all()
@@ -53,19 +54,16 @@ def listaProductos(request):
     return render(request,'producto/lista_productos.html',context)
 
 def crearLote(request):
-    producto = Producto.objects.all()
-    context = {'productos':producto}
-
+    prod = request.POST['producto']
+    producto = Producto.objects.filter(pk=prod);
     if request.method == 'POST':
         form = LoteForm(request.POST)
         if form.is_valid():
+            producto.stock += request.POST['cantidad']
+            producto.save()
             form.save()
-            for producto in productos:
-                if LoteProduccion.id == producto.id:
-                    producto.stock += LoteProduccion.cantidad
-                    pass
         return redirect('productos:listaProductos')
     else:
-        form = LoteForm()
+        form = ProductoForm()
 
     return render(request,'producto/crear_lote.html',{'form':form})

@@ -1,0 +1,83 @@
+{% extends "base/base.html" %}
+{% block title %}
+Nuevo Producto
+{% endblock title %}
+{% block content %}
+    <div class="row">
+        <div class="container">
+            <h1>Nuevo Producto</h1>
+        </div>
+        <form action="" method="POST">  {% csrf_token %} 
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">{{ form.nombre.label }}</label>
+                            {{ form.nombre }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">{{ form.precio.label }}</label>
+                            {{form.precio}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">{{ form.porcentaje_descuento.label }}</label>
+                            {{form.porcentaje_descuento}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">{{ form.cantidad_descuento.label }}</label>
+                            {{form.cantidad_descuento}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">{{ form.stock.label }}</label>
+                            {{form.stock}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">{{ form.stock_minimo.label }}</label>
+                            {{form.stock_minimo}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="" class="control-label">{{ form.tipo.label }}</label>
+                            <select name="tipo" id="" class="form-control">
+                                <option value="0">---------</option>
+                                
+                                {% for tipo in tipos %}
+                                    <option value="{{tipo.id}}">{{tipo.nombre}}</option>
+                                {% endfor %}
+                                    
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <button class="btn guardar">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
