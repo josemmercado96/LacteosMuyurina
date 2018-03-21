@@ -63,8 +63,8 @@ class LoteForm(forms.ModelForm):
 
         widgets = {
             'codigo' : forms.TextInput(attrs={'class':'form-control'}),
-            'fecha_produccion' : forms.TextInput(attrs={'class':'form-control datepicker'}),
-            'fecha_vencimiento' : forms.TextInput(attrs={'class':'form-control datepicker'}),
+            'fecha_produccion' : forms.DateInput(attrs={'class':'form-control'}),
+            'fecha_vencimiento' : forms.DateInput(attrs={'class':'form-control'}),
             'cantidad' : forms.NumberInput(attrs={'class':'form-control'}),
             'producto' : forms.Select(attrs={'class':'form-control', 'id':'producto'}),
         }

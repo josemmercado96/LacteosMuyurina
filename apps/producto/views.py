@@ -54,16 +54,22 @@ def listaProductos(request):
     return render(request,'producto/lista_productos.html',context)
 
 def crearLote(request):
-    prod = request.POST['producto']
-    producto = Producto.objects.filter(pk=prod);
     if request.method == 'POST':
         form = LoteForm(request.POST)
         if form.is_valid():
-            producto.stock += request.POST['cantidad']
-            producto.save()
+            p = form.cleaned_data.get('producto')
+            c = form.cleaned_data.get('cantidad')
+            prod = get_object_or_404(Producto, nombre=p)
+            prod.stock += c 
+            prod.save()
             form.save()
-        return redirect('productos:listaProductos')
+        return redirect('productos:listaLote')
     else:
-        form = ProductoForm()
+        form = LoteForm()
 
     return render(request,'producto/crear_lote.html',{'form':form})
+
+def  listaLote(request):
+    lote = LoteProduccion.objects.all();
+    context = {'lotes':lote}
+    return render(request, 'producto/lista_lote.html', context)

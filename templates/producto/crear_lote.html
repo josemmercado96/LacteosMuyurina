@@ -8,12 +8,53 @@ Nuevo Lote de Producción
         <form action="" method="POST"> {% csrf_token %}
             <div class="row">
                 <div class="container">
-                    {{form.as_p}}
-                </div>
-            </div>
-            <div class="row">
-                <div class="container">
-                    <button class="btn guardar">Guardar</button>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="codigo" class="control-label">Código</label>
+                                <input type="text" name="codigo" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="fecha_produccion" class="control-label">Fecha de Producción</label>
+                                <input type="date" name="fecha_produccion" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="fecha_vencimiento" class="control-label">Fecha de Vencimiento</label>
+                                <input type="date" name="fecha_vencimiento" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="cantidad" class="control-label">Cantidad</label>
+                                <input type="number" name="cantidad" class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="producto" class="control-label">Producto</label>
+                                {{form.producto}}
+                                        
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn guardar">GUARDAR</button>
+                        </div>    
+                    </div>
                 </div>
             </div>
         </form>
