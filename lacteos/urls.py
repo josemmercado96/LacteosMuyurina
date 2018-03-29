@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import login, logout_then_login
+from django.contrib.auth.decorators import login_required
+from apps.venta.views import index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ventas/', include('apps.venta.urls',namespace='ventas')),
-    url(r'^$',login,{'template_name':'index.html'}, name='login'),
+    url(r'^$',login_required(index), name='index'),
     url(r'^accounts/login/',login,{'template_name':'index.html'}, name='login'),
     url(r'^logout/',logout_then_login, name='logout'),
     url(r'^productos/', include('apps.producto.urls',namespace='productos')),

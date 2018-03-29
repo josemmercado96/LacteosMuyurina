@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+{% block title %}
+Lista de Lotes
+{% endblock title %}
+{% block content %}
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <h1 class="text-center">Lista de Lotes de Producción</h1>
+        </div>
+        <div class="table">
+            <table class="table table-bordered table-striped">
+                <thead class="encabezado">
+                    <tr>
+                        <th>Código</th>
+                        <th>Producto</th>
+                        <th>Fecha de Producción</th>
+                        <th>Fecha de Vencimiento</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if lotes %}
+                        {% for lote in lotes %}
+                            <tr>
+                                <th>{{lote.codigo}}</th>
+                                <th>{{lote.producto}}</th>
+                                <th>{{lote.fecha_produccion}}</th>
+                                <th>{{lote.fecha_vencimiento}}</th>
+                                <th>{{lote.cantidad}}</th>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                    <h2>No Existen Registros</h2>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

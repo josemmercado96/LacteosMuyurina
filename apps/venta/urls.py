@@ -5,7 +5,7 @@ from .views import index, crearCliente, listaCliente
 
 
 urlpatterns = [
-	url(r'^$',login_required(index),name='venta'),
+	#url(r'^$',login_required(index),name='index'),
 	url(r'^crear-cliente/',login_required(crearCliente),name='cliente'),
 	url(r'^lista-clientes/',login_required(listaCliente),name='listaCliente'),
 ]

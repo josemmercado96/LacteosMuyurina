@@ -6,14 +6,14 @@ from .models import Cliente
 # Create your views here.
 
 def index(request):
-	return render(request, 'venta/venta.html')
+	return render(request, 'venta/index.html')
 
 def crearCliente(request):
 	if request.method == 'POST':
 		form = ClienteForm(request.POST)
 		if form.is_valid():
 			form.save()
-		return redirect('ventas:venta')
+		return redirect('ventas:index')
 	else:
 		form = ClienteForm()
 

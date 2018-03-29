@@ -78,3 +78,15 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield;
 }
+
+.tarjeta {
+	color: darkgray;
+	border: 2px solid;
+	display: block;
+	border-radius: 5px;
+	transition: color 1s;
+}
+.tarjeta:hover {
+	color: black;
+	text-decoration: none;
+}

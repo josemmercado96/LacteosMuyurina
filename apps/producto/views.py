@@ -63,7 +63,7 @@ def crearLote(request):
             prod.stock += c 
             prod.save()
             form.save()
-        return redirect('productos:listaLote')
+            return redirect('productos:listaLote')
     else:
         form = LoteForm()
 

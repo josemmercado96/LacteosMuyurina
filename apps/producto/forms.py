@@ -1,4 +1,5 @@
 from django import forms
+from django.shortcuts import get_object_or_404
 from .models import Refrigeracion, TipoProducto, Producto, LoteProduccion
 
 class RefrigeracionForm(forms.ModelForm):
@@ -68,3 +69,11 @@ class LoteForm(forms.ModelForm):
             'cantidad' : forms.NumberInput(attrs={'class':'form-control'}),
             'producto' : forms.Select(attrs={'class':'form-control', 'id':'producto'}),
         }
+
+    def clean_codigo(self):
+        codigo = self.cleaned_data.get("codigo")
+        if not codigo:
+            raise forms.ValidationError("Ingrese un Código Válido")
+       # elif get_object_or_404(LoteProduccion, codigo=codigo):
+         #   raise forms.ValidationError("Este Lote ya fue Registrado")
+        return codigo
